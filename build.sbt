@@ -1,4 +1,4 @@
-name := "st-workshop"
+name := "scala-launchpad"
 
 version := "1.0"
 
@@ -31,3 +31,5 @@ fork in run := true
 connectInput in run := true
 
 outputStrategy in run := Some(StdoutOutput)
+
+initialCommands in console := "import language.postfixOps"
