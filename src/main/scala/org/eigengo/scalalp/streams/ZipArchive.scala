@@ -16,14 +16,8 @@ class ZipArchive(file: File) {
    */
   def flatMap[B](operation: (ZipEntry, InputStream) => Option[B]): List[B] = {
     import scala.collection.JavaConversions._
-    val entries = zipFile.entries().toList
-    entries.flatMap { entry =>
-      val is = zipFile.getInputStream(entry)
-      val result = operation(entry, is)
-      is.close()
 
-      result
-    }
+    ???
   }
 
 }

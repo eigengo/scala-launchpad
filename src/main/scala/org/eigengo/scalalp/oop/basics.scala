@@ -1,25 +1,25 @@
 package org.eigengo.scalalp.oop
 
-abstract class Car(make: String) {
-  def drive(): Unit
-}
+/*
+ Define hierarchy
 
-class SportsCar(make: String) extends Car(make) {
-  def this() = this("No name")
+ (1)
+   Car (abstract)
+   ^ + <init>(make: String)
+   | + drive(): Unit (abstract)
+   + SportsCar
+   | + drive(): Unit
+   + RedLorry
+     + drive(): Unit
 
-  override def drive(): Unit = println(s"Vroom! $make")
-}
+ (2)
+ Create OopMain, where you make instances of SportsCar and RedLorry
 
-class RedLorry(make: String) extends Car(make) {
-  def this() = this("No name")
+ (3)
+ Add a second constructor to SportsCar and RedLorry that takes no parameters, and calls the
+ constructor with name: String, setting it to "No name"
 
-  override def drive(): Unit = println("https://www.youtube.com/watch?v=8iusUq4-f5U")
-}
+ (4)
+ Demonstrate usage in OopMain
+ */
 
-object OopMain extends App {
-  val c1 = new SportsCar("Ferrari")
-  val c2 = new RedLorry()
-
-  c1.drive()
-  c2.drive()
-}

@@ -1,37 +1,40 @@
 package org.eigengo.scalalp.oop
 
-trait Food
-case class Grass() extends Food
-case class Peanut() extends Food
+/*
+ (1)
+ Food (interface)
+   ^
+   +-- Grass (case class)
+   +-- Peanut (case class)
+   +-- Animal (interface)
+   |     + eat(food: Food): Unit
+   +-- Cow (case class)
+   +-- Shark (case class)
+   +-- Parrot (case class)
 
-trait Animal extends Food {
-  type SuitableFood <: Food
-  def eat(food: SuitableFood): Unit = println(s"Munching $food")
-}
 
-class Cow extends Animal {
-  type SuitableFood = Grass
-}
+ (2)
+ Write a main class, constructing
+   milka: Cow
+   budgie: Parrot
+   sharky: Shark
 
-class Shark extends Animal {
-  type SuitableFood = Food
-}
+ observe that
+   sharky.eat(milka)
+   sharky.eat(parrot)
 
-class Parrot extends Animal {
-  type SuitableFood = Grass
-}
+ but also that
+   milka.eat(sharky)
+   parrot.eat(milka)
 
-object ZooMain extends App {
-  val milka = new Cow
-  val milka2: Animal = new Cow
-  val budgie = new Parrot
-  val sharky = new Shark
+ :(
 
-  sharky.eat(milka)
-  sharky.eat(budgie)
-  sharky.eat(sharky)
+ (3)
+ Modify Animal#eat to take some abstract type SuitableFood, subtype of Food, which has to be
+ defined in the subclasses. Make sure that you implement the SuitableFood appropriately so that
 
-  // milka.eat(budgie)
-  // budgie.eat(sharky)
-  // milka2.eat(sharky)
-}
+   milka.eat(sharky)
+
+ and similar do not compile
+ */
+

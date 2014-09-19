@@ -43,17 +43,7 @@ object TwentyNewsGroups {
      * @param line the line with the headers on each line, with body separated by two \n\n
      * @return the parsed message
      */
-    def parse(line: String): Message = {
-      val headerIndex = line.indexOf("\\n\\n")
-      val header = line.substring(0, headerIndex)
-      val headerElements = header.split("\\\\n").flatMap { e =>
-        val i = e.indexOf(':')
-        if (i != -1 && i + 2 < e.length) Some(e.substring(0, i) -> e.substring(i + 2)) else None
-      }.toMap
-
-      val text = line.substring(headerIndex + 3)
-      Message(headerElements("From"), headerElements("Subject"), text)
-    }
+    def parse(line: String): Message = ???
   }
 
   def main(args: Array[String]) {
@@ -72,15 +62,6 @@ object TwentyNewsGroups {
     //    Message.parse ->
     //    m => Classified(classifier.predict(m.text), m) ->
     // cm => println(cm.label)
-
-    Flow(source.getLines()).
-      filter(_.length > 10).
-      map(Message.parse).
-      map(message => Classified(classifier.predict(message.text), message)).
-      foreach(cm => println(cm.label)).
-      onComplete(materializer) {
-        case _ => system.shutdown()
-      }
     }
 
 }
