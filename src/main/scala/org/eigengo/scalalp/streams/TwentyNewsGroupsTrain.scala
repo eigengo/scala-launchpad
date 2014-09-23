@@ -12,6 +12,14 @@ object TwentyNewsGroupsTrain {
 
   import java.io.File
 
+  def processEntry(entry: ZipEntry, contents: InputStream): Option[Example[String, String]] = {
+    val names = entry.getName.split('/')
+    if (names.length == 3 && !names(2).isEmpty) {
+      val text = Source.fromInputStream(contents)(Codec.ISO8859).mkString
+      Some(Example(names(1), text, names(2)))
+    } else None
+  }
+
   def main(args: Array[String]) {
     def fromLabelled(top: String)(entry: ZipEntry, contents: InputStream): Option[Example[String, String]] = ???
     // Example stopword set (you should use a more extensive list for actual classifiers).
@@ -45,7 +53,7 @@ object TwentyNewsGroupsTrain {
 
     Hint: use the ZipFile#flatMap, giving it appropriate operation.
      */
-    val trainingExamples: List[Example[String, String]] = ???
+    val trainingExamples = zipFile.flatMap(processEntry)
     val config = LiblinearConfig(cost = 5.0, eps = 0.01)
     val featurizer = new BowFeaturizer(stopwords)
     val classifier = trainClassifierHashed(config, featurizer, trainingExamples, 50000)
