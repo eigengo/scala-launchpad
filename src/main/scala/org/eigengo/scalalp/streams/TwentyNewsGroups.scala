@@ -103,7 +103,7 @@ object TwentyNewsGroups {
 
 
     // Compare the block above with the same flow on plain collections:
-    
+
 //    source.getLines()
 //      .filter(_.length > 10)
 //      .map(Message.parse)
