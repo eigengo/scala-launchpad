@@ -1,10 +1,10 @@
 package org.eigengo.scalalp.streams
 
-import nak.core.{FeaturizedClassifier, IndexedClassifier}
-import scala.util.{Success, Failure}
-import akka.stream.{FlowMaterializer, MaterializerSettings}
-import akka.stream.scaladsl.Flow
 import akka.actor.ActorSystem
+import akka.stream.scaladsl.Flow
+import akka.stream.{FlowMaterializer, MaterializerSettings}
+import nak.core.{FeaturizedClassifier, IndexedClassifier}
+
 import scala.io.{Codec, Source}
 
 object TwentyNewsGroups {
