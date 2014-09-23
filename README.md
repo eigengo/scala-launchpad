@@ -1,7 +1,4 @@
-#Strongly-typed FP workshop
-Jan Machacek (<janm@cakesolutions.net>, @honzam399) will show how you can make the most of today's strongly-typed FP 
-languages. On the JVM, the workshop includes Scala; outside the JVM, we have Haskell.
-
+#Scala Launchpad
 If you are new to FP, Scala's functional, strongly-typed and object-oriented nature provides shallower learning 
 curve; once you are comfortable with some of the advanced concepts in Scala, you will find the journey into 
 Haskell a lot easier.
