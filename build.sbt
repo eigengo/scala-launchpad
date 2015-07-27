@@ -2,7 +2,7 @@ name := "scala-launchpad"
 
 version := "1.0"
 
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.7"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka"      %% "akka-stream-experimental" % "0.7",
@@ -18,9 +18,6 @@ scalacOptions ++= Seq(
   "-unchecked",
   "-deprecation",
   "-Xlint",
-  "-Ywarn-dead-code",
-  "-language:_",
-  "-target:jvm-1.7",
   "-encoding", "UTF-8"
 )
 
