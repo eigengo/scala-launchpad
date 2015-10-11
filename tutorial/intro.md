@@ -2,7 +2,9 @@
 
 Scala is an object-functional, strongly-typed language. Let's see how it all fits together. We begin by exploring its cool side by writing a function that sums all numbers from _a_ to some _b_.
 
-![Sum(a, b)(i)](http://latex.codecogs.com/gif.latex?%5Csum_%7Bi%3Da%7D%5Eb%20i)
+```tex
+\sum_{i=a}^b i
+```
 
 Of course, _without_ mutation, and _with_ recursion.
 
@@ -15,7 +17,9 @@ def sumInts(a: Int, b: Int): Int = if (a > b) 0 else a + sumInts(a + 1, b)
 
 Let's modify this a bit and do a sum-of-squares.
 
-![Sum(a, b)(i ^ 2)](http://latex.codecogs.com/gif.latex?%5Csum_%7Bi%3Da%7D%5Eb%20i%5E2)
+```tex
+\sum_{i=a}^b i^2
+```
 
 It's essentially the same thing:
 
@@ -27,7 +31,9 @@ def sumSquares(a: Int, b: Int): Int = if (a > b) 0 else (a * a) + sumSquares(a +
 
 These two functions only differ by the operation (``a`` or ``a * a``), otherwise they are the same thing. And so, we'd like to extract this same thing. That's just good engineering. To uncover everything we'll need, let's compute pi using Leibnitz's pi-sum.
 
-![Sum(a by 4, b)(1/(i*(i+2))](http://latex.codecogs.com/gif.latex?%5Csum_%7Bi%3Da%5C%20by%5C%204%7D%7D%5Eb%20%5Cfrac%7B1%7D%7Bi%5E2%2B2i%7D)
+```tex
+\sum _{ i=a\quad by\quad 4 }^{ b } \frac { 1 }{ i^{ 2 }+2i } 
+```
 
 This converges to
 
